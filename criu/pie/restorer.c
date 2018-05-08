@@ -1357,10 +1357,11 @@ long __export_restore_task(struct task_restore_args *args)
 	/*
 	 * Proxify vDSO.
 	 */
-	if (vdso_proxify(&args->vdso_maps_rt.sym, args->vdso_rt_parked_at,
-		     args->vmas, args->vmas_n, args->compatible_mode,
-		     fault_injected(FI_VDSO_TRAMPOLINES)))
-		goto core_restore_end;
+	// HACK: there is no vDSO to proxify, skip this
+	// if (vdso_proxify(&args->vdso_maps_rt.sym, args->vdso_rt_parked_at,
+	// 	     args->vmas, args->vmas_n, args->compatible_mode,
+	// 	     fault_injected(FI_VDSO_TRAMPOLINES)))
+	// 	goto core_restore_end;
 #endif
 
 	/*
